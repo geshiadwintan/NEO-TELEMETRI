@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Sederhana </title>
+
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Quicksand', 'Segoe UI', 'Poppins', system-ui, sans-serif;
+    }
+
+    /* BACKGROUND UTAMA */
+    body{
+        background: linear-gradient(135deg,#fbc2eb 0%, #a6c1ee 100%);
+        min-height:100vh;
+        background-size:300% 300%;
+        color:#2d3e50;
+        transition:background 0.3s ease;
+        padding-bottom:30px;
+    }
+
+    /* ANIMASI MELAYANG NAIK TURUN*/
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+
+    /* ANIMASI MUNCUL BERKILAU*/
+    @keyframes sparkle {
+        0% { opacity:0; transform:scale(0.8);}
+        100% { opacity:1; transform:scale(1);}
+    }
+
+    /* HEADER(JUUDL WEBSITE)*/
+    header{
+        text-align:center;
+        padding-top:35px;
+        position:relative;
+    }
+
+    header h1{
+        font-size:48px;
+        font-weight:800;
+        background: linear-gradient(135deg, #FF6B9D, #C44569, #F9A26C);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color:transparent;
+        letter-spacing:2px;
+        text-shadow: 3px 3px 12px rgba(0,0,0,0.1);
+        display:inline-block;
+        animation:float 3s ease-in-out infinite;
+    }
+
+    header p{
+        margin-top:12px;
+        color:#fff9e0;
+        font-size:16px;
+        font-weight:600;
+        background:rgba(0,0,0,0.2);
+        display:inline-block;
+        padding:6px 20px;
+        border-radius:50px;
+        backdrop-filter:blur(4px);
+    }
+
+    /* CONTAINER */
+    .container{
+        width:92%;
+        max-width:1000px;
+        margin:auto;
+        margin-top:30px;
+    }
+
+    /* CARD */
+    .card{
+        background: rgba(255,255,255,0.78);
+        backdrop-filter: blur(14px);
+        border:1px solid rgba(255,255,255,0.6);
+        padding:28px 22px;
+        border-radius:38px;
+        margin-bottom:28px;
+        box-shadow:0 20px 35px rgba(0,0,0,0.1), 0 2px 8px rgba(255,255,255,0.3);
+        transition:all 0.35s ease;
+    }
+
+    .card:hover{
+        transform:translateY(-6px) scale(1.01);
+        background: rgba(255,255,255,0.88);
+        box-shadow:0 28px 40px rgba(0,0,0,0.15);
+    }
+
+    /* ICON */
+    .icon{
+        width:80px;
+        height:80px;
+        background:linear-gradient(145deg, #FFB347, #FF6B8B, #A564E6);
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin:auto;
+        margin-bottom:18px;
+        font-size:40px;
+        box-shadow:0 12px 20px rgba(0,0,0,0.2);
+        transition:all 0.2s;
+        animation:float 2.5s infinite;
+    }
+
+    .icon:hover{
+        transform:rotate(5deg) scale(1.1);
+    }
+
+    /* TITLE */
+    .card h2{
+        text-align:center;
+        margin-bottom:8px;
+        font-weight:800;
+        font-size:28px;
+        background: linear-gradient(120deg, #FF8566, #DB5A9F);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color:transparent;
+    }
+
+    .card p{
+        text-align:center;
+        color:#5a4a3c;
+        margin-bottom:22px;
+        font-size:14px;
+        font-weight:600;
+    }
+
+    /* BUTTON */
+    button{
+        border:none;
+        padding:12px 28px;
+        border-radius:60px;
+        background: linear-gradient(95deg, #FF9A6E, #FF6B9D);
+        color:white;
+        font-weight:bold;
+        font-size:15px;
+        cursor:pointer;
+        transition:0.25s;
+        box-shadow:0 5px 12px rgba(0,0,0,0.15);
+        letter-spacing:0.5px;
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    button:hover{
+        transform:scale(1.05);
+        background: linear-gradient(95deg, #FFB07C, #FF85B3);
+        box-shadow:0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    button:active{
+        transform:scale(0.96);
+    }
+
+    .center{
+        display:flex;
+        justify-content:center;
+    }
+
+    /* BIODATA AREA */
+    .bio-card .bio-box{
+        margin-top:22px;
+        background:rgba(255,235,215,0.7);
+        padding:20px;
+        border-radius:32px;
+        display:none;
+        line-height:32px;
+        backdrop-filter:blur(5px);
+        border:1px solid #fff2cf;
+        animation:sparkle 0.4s ease;
+    }
+
+    .bio-item{
+        font-size:16px;
+        margin:10px 0;
+        display:flex;
+        align-items:center;
+        gap:12px;
+        flex-wrap:wrap;
+        border-bottom:1px dashed #ffbc8c;
+        padding:8px 0;
+    }
+
+    /* STIKER AREA */
+    .stiker-area{
+        margin-top:15px;
+        display:flex;
+        justify-content:center;
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .stiker{
+        font-size:40px;
+        transition:0.2s;
+        cursor:pointer;
+    }
+
+    .stiker:hover{
+        transform:scale(1.2) rotate(5deg);
+    }
+
+    /* FITUR WARNA */
+    .color-preview{
+        background:#ffe3b5;
+        border-radius:28px;
+        padding:20px;
+        text-align:center;
+        margin:20px 0 15px;
+        transition:all 0.3s;
+        font-weight:bold;
+        color:#5e3a23;
+        box-shadow:inset 0 0 0 2px rgba(255,245,200,0.8);
+    }
+
+    .color-preview span{
+        font-size:32px;
+        display:block;
+    }
+
+    .btn-wrap{
+        display:flex;
+        gap:12px;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin-top:8px;
+    }
+
+    .btn-small{
+        padding:8px 18px;
+        font-size:13px;
+        background:linear-gradient(135deg,#c28bff,#ad6eff);
+    }
+
+    /* TODO LIST */
+    .todo-area{
+        background:rgba(255,248,225,0.6);
+        border-radius:28px;
+        padding:8px;
+    }
+
+    .todo-box{
+        display:flex;
+        gap:12px;
+        margin-bottom:18px;
+        flex-wrap:wrap;
+    }
+
+    input{
+        flex:1;
+        padding:14px 18px;
+        border:none;
+        border-radius:50px;
+        background:#fffef7;
+        border:2px solid #ffcfaa;
+        font-size:14px;
+        transition:0.2s;
+        font-weight:500;
+        outline:none;
+    }
+
+    input:focus{
+        border-color:#ff8c69;
+        outline:none;
+        box-shadow:0 0 0 3px rgba(255,140,105,0.2);
+    }
+
+    ul{
+        list-style:none;
+        max-height:260px;
+        overflow-y:auto;
+    }
+
+    li{
+        background:white;
+        padding:12px 18px;
+        border-radius:60px;
+        margin-top:10px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        box-shadow:0 2px 8px rgba(0,0,0,0.05);
+        transition:0.2s;
+        border-left:6px solid #FFB347;
+    }
+
+    li:hover{
+        transform:translateX(5px);
+        background:#fff6e8;
+    }
+
+    .done{
+        text-decoration:line-through;
+        opacity:0.6;
+        border-left-color:#9b9b9b;
+    }
+
+    .taskBtn{
+        width:auto;
+        padding:6px 16px;
+        font-size:12px;
+        background:#e0c3a5;
+        color:#4a2a1a;
+        box-shadow:none;
+        margin-left:8px;
+    }
+
+    .taskBtn:hover{
+        background:#cb9e77;
+        transform:scale(1.02);
+    }
+
+    .hapusBtn{
+        background:#ffb4a2;
+    }
+
+    /* FOOTER */
+    .footer{
+        text-align:center;
+        margin-top:30px;
+        color:#fffbe6;
+        font-weight:600;
+        text-shadow:1px 1px 0 rgba(0,0,0,0.1);
+        font-size:14px;
+    }
+
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>🌸 GESHIA'S WEBSITE 🌸</h1>
+        <div class="bootcamp-text">Front End Bootcamp - Tugas 1</div>
+    </header>
+
+<div class="container">
+
+    <!-- FITUR 1 : MY BIODATA -->
+    <div class="card bio-card">
+        <div class="icon">
+            🧸✨
+        </div>
+        <h2>✨ My Biodata ✨</h2>
+        <p>klik tombol di bawah untuk melihat biodata lengkap!</p>
+        
+        <div class="center">
+            <button id="btnTampilBio"> Tampilkan Biodata </button>
+        </div>
+
+        <div id="bioContainer" class="bio-box"></div>
+    
+        <div class="stiker-area">
+            <span class="stiker" onclick="pilihStiker(this)">💗</span>
+            <span class="stiker" onclick="pilihStiker(this)">🍭</span>
+        </div>
+        <div id="stikerPesan" style="text-align:center; font-size:13px; color:#bd7e4a; margin-top:8px;">❤️ klik stiker❤️</div>
+    </div>
+
+    <!--FITUR 2 : MAGIC COLOR BACKGROUND-->
+    <div class="card" id="magicColorCard">
+        <h2>🎨 Magic Color Background 🎨</h2>
+        <p>klik tombol untuk mengubah warna</p>
+        
+        <div class="btn-wrap">
+            <button id="btnRandomCard" class="btn-small">🎲 Random Warna</button>
+            <button id="btnPastelCard" class="btn-small">🍬 Warna Pastel</button>
+            <button id="btnResetCard" class="btn-small">🔄 Reset Awal</button>
+        </div>
+    </div>
+
+    <!--FITUR 3 : DAFTAR KEGIATAN KU -->
+    <div class="card">
+        <h2>Daftar Kegiatan Ku</h2>
+        <p>tambahkan kegiatan, centang selesai atau hapus</p>
+        
+        <div class="todo-area">
+            <div class="todo-box">
+                <input type="text" id="taskInput" placeholder="contoh: belajar javascript, bikin web ...">
+                <button id="btnAddTask">➕ Tambah</button>
+            </div>
+            <ul id="taskList"></ul>
+            <div class="center" style="margin-top:12px;">
+                <button id="btnClearAll" style="background:#c9ad7a;">🧹 Hapus Semua</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// JAVASCRIPT//
+
+// Biodata//
+let nama = "Geshia Dwintan";
+let nim = "2410432029";
+let status = "Mahasiswi Aktif";
+let divisi = "Programming";
+let hobi = "Menonton dan Mencari Hal Baru ";
+
+//Elemen
+let btnBio = document.getElementById("btnTampilBio");
+let bioContainer = document.getElementById("bioContainer");
+
+function tampilkanBiodata() {
+    // Buat isi biodata
+    bioContainer.innerHTML = `
+        <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap; justify-content:center; border-bottom:2px dotted #ffbf91; padding-bottom:10px;">
+            <span style="font-size:52px;">👩‍💻</span>
+            <div><strong style="font-size:26px; color:#db5d30;">${nama}</strong></div>
+        </div>
+        <div class="bio-item"><span>🎫 NIM</span> <strong>${nim}</strong></div>
+        <div class="bio-item"><span>📌 Status</span> <strong>${status}</strong></div>
+        <div class="bio-item"><span>🧩 Divisi</span> <strong> ${divisi}</strong></div>
+        <div class="bio-item"><span>🎨 Hobi</span> <strong>${hobi}</strong></div>
+    `;
+    
+    bioContainer.style.display = "block";
+}
+
+btnBio.addEventListener("click", tampilkanBiodata);
+
+function pilihStiker(element) {
+    let stiker = element.innerText;
+    let pesanDiv = document.getElementById("stikerPesan");
+    
+    let motivasi = "";
+    if (stiker === "💗") {
+        motivasi = "small steps, big impact !";
+    } else {
+        motivasi = "enjoy the little things";
+    }
+    
+    pesanDiv.innerHTML = motivasi;
+}
+
+
+// FITUR 2 : MAGIC COLOR BACKGROUND 
+
+let body = document.body;
+let kotakDemo = document.getElementById("colorDemoBox");
+
+// Warna Reset Awal
+let defaultGradient = "linear-gradient(135deg,#fbc2eb 0%, #a6c1ee 100%)";
+
+// Fungsi Ranndom warna
+function buatWarnaRandom() {
+    let r = Math.floor(Math.random() * 200 + 55);
+    let g = Math.floor(Math.random() * 200 + 55);
+    let b = Math.floor(Math.random() * 200 + 55);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+// Warna pastel
+let daftarWarnaPastel = ["#FFDAD6", "#FFF2CC", "#D5E7D6", "#FDE2C4", "#E0D3FF", "#FFCFBE", "#C9E9FF", "#FCE1E4"];
+
+// Fungsi Warna Pastel
+function warnaPastelRandom() {
+    let indexRandom = Math.floor(Math.random() * daftarWarnaPastel.length);
+    return daftarWarnaPastel[indexRandom];
+}
+
+// Tombol Random Warna
+let btnRandom = document.getElementById("btnRandomCard");
+btnRandom.addEventListener("click", function() {
+    let warnaBaru = buatWarnaRandom();
+    body.style.background = warnaBaru;
+    kotakDemo.innerHTML = "<span>🌈✨</span> warna random!";
+});
+
+// Tombol Pastel
+let btnPastel = document.getElementById("btnPastelCard");
+btnPastel.addEventListener("click", function() {
+    let warnaBaru = warnaPastelRandom();
+    body.style.background = warnaBaru;
+    kotakDemo.innerHTML = "<span>🌸✨</span> warna pastel lembut!";
+});
+
+// Tombol Reset
+let btnReset = document.getElementById("btnResetCard");
+btnReset.addEventListener("click", function() {
+    body.style.background = defaultGradient;
+    kotakDemo.innerHTML = "<span>🌈✨</span> warna kembali ke awal!";
+});
+
+
+// FITUR 3 : DAFTAR KEGIATAN KU 
+let daftarTugas = [];
+
+// Elemen
+let inputTugas = document.getElementById("taskInput");
+let btnTambah = document.getElementById("btnAddTask");
+let listTugas = document.getElementById("taskList");
+let btnHapusSemua = document.getElementById("btnClearAll");
+
+// Fungsi Menampilkan Ulang Daftar Tugas
+function tampilkanTugas() {
+    listTugas.innerHTML = "";
+    if (daftarTugas.length === 0) {
+        let liKosong = document.createElement("li");
+        liKosong.style.justifyContent = "center";
+        liKosong.style.background = "#fff0e0";
+        liKosong.innerText = "belum ada kegiatan, tambah yuk Geshia!";
+        listTugas.appendChild(liKosong);
+        return;
+    }
+
+    for (let i = 0; i < daftarTugas.length; i++) {
+        let tugas = daftarTugas[i];
+        
+        let li = document.createElement("li");
+    
+        if (tugas.selesai === true) {
+            li.classList.add("done");
+        }
+    
+        let spanTeks = document.createElement("span");
+        spanTeks.innerText = tugas.teks;
+        
+        let divTombol = document.createElement("div");
+        
+        let tombolSelesai = document.createElement("button");
+        tombolSelesai.innerText = "✓ Selesai";
+        tombolSelesai.className = "taskBtn";
+    
+        let tombolHapus = document.createElement("button");
+        tombolHapus.innerText = "🗑 Hapus";
+        tombolHapus.className = "taskBtn hapusBtn";
+        
+        tombolSelesai.addEventListener("click", (function(index) {
+            return function() {
+                if (daftarTugas[index].selesai === true) {
+                    daftarTugas[index].selesai = false;
+                } else {
+                    daftarTugas[index].selesai = true;
+                }
+                tampilkanTugas();
+            };
+        })(i));
+        
+        tombolHapus.addEventListener("click", (function(index) {
+            return function() {
+                daftarTugas.splice(index, 1);
+                tampilkanTugas();
+            };
+        })(i));
+        
+        divTombol.appendChild(tombolSelesai);
+        divTombol.appendChild(tombolHapus);
+
+        li.appendChild(spanTeks);
+        li.appendChild(divTombol);
+        
+        listTugas.appendChild(li);
+    }
+}
+
+// Fungsi Menambah Tugas Baru
+function tambahTugas() {
+    let teksBaru = inputTugas.value.trim();
+    
+    if (teksBaru === "") {
+        alert("tulis dulu kegiatanmu ya!");
+        return;
+    }
+    
+    daftarTugas.push({
+        teks: teksBaru,
+        selesai: false
+    });
+    
+    inputTugas.value = "";
+    tampilkanTugas();
+}
+
+// Fungsi Hapus Semua Tugas
+function hapusSemuaTugas() {
+    if (daftarTugas.length > 0) {
+        let yakin = confirm("yakin hapus semua list?");
+        if (yakin === true) {
+            daftarTugas = [];
+            tampilkanTugas();
+        }
+    } else {
+        alert("list masih kosong, isi dengan kegiatan dulu!");
+    }
+}
+
+btnTambah.addEventListener("click", tambahTugas);
+btnHapusSemua.addEventListener("click", hapusSemuaTugas);
+
+inputTugas.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        tambahTugas();
+    }
+});
+
+daftarTugas.push({ teks: "Belajar Phyton", selesai: false });
+daftarTugas.push({ teks: "Diskusi Kelompok final projeck ", selesai: false });
+daftarTugas.push({ teks: "Bikin PPT presentasi", selesai: true });
+tampilkanTugas();
+
+bioContainer.style.display = "none"; //Menyembunyikan biodata awal
+
+</script>
+</body>
+</html>
